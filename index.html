@@ -1,73 +1,122 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-  <title>PEC 2 - Visualización de Datos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Hotel Bookings Storytelling</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 2em; background: #f4f4f4; }
-    h1, h2 { color: #333; }
-    section { margin-bottom: 2em; background: #fff; padding: 1.5em; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    iframe { width: 100%; height: 500px; border: none; margin-top: 1em; }
-    .source-link { font-size: 0.9em; color: #555; }
-    .external-link { display: inline-block; margin-top: 1em; font-size: 0.95em; background: #0057b7; color: #fff; padding: 10px 15px; border-radius: 5px; text-decoration: none; }
-    .indice { background: #ffffff; padding: 1em; margin-bottom: 2em; border-left: 5px solid #0057b7; }
-    .indice ul { list-style: none; padding-left: 0; }
-    .indice li { margin: 0.5em 0; }
-    .indice a { text-decoration: none; color: #0057b7; }
-    .indice a:hover { text-decoration: underline; }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+    section.panel {
+      position: relative;
+      height: 100vh;
+    }
+    .chart {
+      width: 90%;
+      height: 80%;
+      margin: 0 auto;
+    }
+    .fixed-title {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .fixed-subtitle {
+      position: fixed;
+      top: 50px;
+      left: 20px;
+      z-index: 100;
+      font-size: 1rem;
+      color: #555;
+    }
+    #filters {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      z-index: 50;
+      background: rgba(255,255,255,0.8);
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    /* Opcional: puedes ajustar márgenes de los labels */
+    #filters label { margin-right: 1em; }
   </style>
 </head>
 <body>
-  <section style="text-align:center; padding: 2em; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-    <h1>PEC 2 - Visualización de Datos</h1>
-    <p><strong>Autor:</strong> Victor Salazar</p>
-    <p><strong>Máster en Ingeniería Informática</strong></p>
+
+  <!-- Títulos fijos -->
+  <div class="fixed-title" id="story-title"></div>
+  <div class="fixed-subtitle" id="story-description"></div>
+
+  <!-- Panel Mapa -->
+  <section class="panel" id="panel-map">
+    <div class="chart" id="chart-map"></div>
   </section>
 
-  <section class="indice">
-    <h2>Índice</h2>
-    <ul>
-      <li><a href="#infografia">1. Infografía: Inversión en salud</a></li>
-      <li><a href="#pictograma">2. Icon Chart: Médicos por habitante</a></li>
-      <li><a href="#bumpchart">3. Bump Chart: Evolución del ranking</a></li>
-    </ul>
-  </section>
-  <section id="infografia">
-    <h2>Infografía</h2>
-    <p>Representación visual de los países latinoamericanos que más invierten en salud, como porcentaje del PIB en 2021. Se destaca a Cuba como líder regional.</p>
-    <center>
-        <img src="Infografia - PIB Salud 2021 Latam.png" alt="Infografía Inversión en salud Latam" style="width: 80%; max-width: 800px;">
-    </center>
-    <br/>
-    <a class="external-link" 
-     href="https://www.canva.com/design/DAGjm0pkxaE/SO5jGrGd5J6uyKzlnfOIZg/view?utlId=h3c75c03fc6" target="_blank">Ver Infografía en Canva</a>
-   
-    <p class="source-link">Fuente: Statista</p>
+  <!-- Panel Line -->
+  <section class="panel" id="panel-line">
+    <div class="chart" id="chart-line"></div>
   </section>
 
-  <section id="pictograma">
-    <h2>Icon Chart</h2>
-    <p>Pictograma que compara la cantidad de médicos por cada 10.000 personas en
-         distintos países, destacando diferencias entre España y Ecuador.</p>
-    <div class="flourish-embed flourish-pictogram" data-src="visualisation/22469241"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/22469241/thumbnail" width="100%" alt="pictogram visualization" /></noscript></div>
-
-
-    
-    <a class="external-link" target="_blank" href="https://public.flourish.studio/visualisation/22469241/">  Ver Icon Chart en flourish</a>
-    <p class="source-link">Fuente: Our World in Data</p>
+  <!-- Panel Bar -->
+  <section class="panel" id="panel-bar">
+    <div class="chart" id="chart-bar"></div>
   </section>
 
-  <section id="bumpchart">
-    <h2>Bump Chart</h2>
-    <p>Comparativa temporal del ranking de países según el número de médicos por cada 10.000 personas, resaltando ascensos y descensos en el acceso a personal médico.</p>
-    <div class="flourish-embed flourish-chart" data-src="visualisation/22470030"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/22470030/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
-    <a class="external-link" target="_blank" 
-       href="https://public.flourish.studio/visualisation/22470030/"> Ver Bump Chart en flourish </a>
-
-    <p class="source-link">Fuente: Our World in Data</p>
+  <!-- Panel Time Series -->
+  <section class="panel" id="panel-timeseries">
+    <div id="filters" class="container">
+      <div class="row">
+        <div class="col-auto">
+          <label for="year-filter">
+            Año:
+            <select id="year-filter" class="form-select form-select-sm">
+              <option value="all">Todos</option>
+              <option value="2015">2015</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+            </select>
+          </label>
+        </div>
+        <div class="col-auto">
+          <label for="month-filter">
+            Mes:
+            <select id="month-filter" class="form-select form-select-sm">
+              <option value="all">Todos</option>
+              <option value="01">Enero</option>
+              <option value="02">Febrero</option>
+              <option value="03">Marzo</option>
+              <option value="04">Abril</option>
+              <option value="05">Mayo</option>
+              <option value="06">Junio</option>
+              <option value="07">Julio</option>
+              <option value="08">Agosto</option>
+              <option value="09">Septiembre</option>
+              <option value="10">Octubre</option>
+              <option value="11">Noviembre</option>
+              <option value="12">Diciembre</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="chart" id="chart-timeseries"></div>
   </section>
 
-
+  <!-- Dependencias -->
+  <!-- Bootstrap JS Bundle (incluye Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- D3 y ScrollMagic -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/scrollmagic@2.0.7/scrollmagic/minified/ScrollMagic.min.js"></script>
+  <!-- Lógica de tu storytelling -->
+  <script type="module" src="story.js"></script>
 </body>
 </html>
