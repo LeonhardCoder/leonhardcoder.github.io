@@ -6,10 +6,17 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-    }
+    body { font-family: Arial, sans-serif; margin: 2em; background: #f4f4f4; }
+    h1, h2 { color: #333; }
+    section { margin-bottom: 2em; background: #fff; padding: 1.5em; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    iframe { width: 100%; height: 500px; border: none; margin-top: 1em; }
+    .source-link { font-size: 0.9em; color: #555; }
+    .external-link { display: inline-block; margin-top: 1em; font-size: 0.95em; background: #0057b7; color: #fff; padding: 10px 15px; border-radius: 5px; text-decoration: none; }
+    .indice { background: #ffffff; padding: 1em; margin-bottom: 2em; border-left: 5px solid #0057b7; }
+    .indice ul { list-style: none; padding-left: 0; }
+    .indice li { margin: 0.5em 0; }
+    .indice a { text-decoration: none; color: #0057b7; }
+    .indice a:hover { text-decoration: underline; }
     section.panel {
       position: relative;
       height: 100vh;
@@ -55,6 +62,8 @@
     <p><strong>Autor:</strong> Victor Salazar</p>
     <p><strong>Máster en Ingeniería Informática</strong></p>
   </section>
+
+   <section id="graficas">
   <!-- Títulos fijos -->
   <div class="fixed-title" id="story-title"></div>
   <div class="fixed-subtitle" id="story-description"></div>
@@ -113,7 +122,7 @@
     </div>
     <div class="chart" id="chart-timeseries"></div>
   </section>
-
+  </section>
   <!-- Dependencias -->
   <!-- Bootstrap JS Bundle (incluye Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
